@@ -11,19 +11,19 @@ namespace MadExpences.Data
         public string Name { get; set; }
         public string Mail { get; set; }
 
-        public void CreateUser()
+        public static void CreateUser()
         {
-
+            
 
         }
 
         public void GetUser()
         {
-            var client = new MongoClient("mongodb://192.168.1.13:27017");
+            var client = Dao.DbConnection();
             var db = client.GetDatabase("madexpences");
-            var col = db.GetCollection<BsonDocument>("transactions");
-            var docs = col.FindSync<BsonDocument>("data.userData.Name: 'asdf'");
-            var sad = "";
+            var col = db.GetCollection<BsonDocument>("usuarios");
+            var docs = col.FindSync<BsonDocument>("data.userData.Name: 'kurisu tina'");
+            //var sad = "";
         }
     }
 }
