@@ -1,18 +1,19 @@
 ﻿using System;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace MadExpences.Data
 {
     public static class Dao
     {
-        public static MongoClient DbConnection()
+        public static IMongoDatabase DbConnection()
         {
-            // Cambiar IP según servidor de mongo conectado
-            var connectionString = "mongodb://192.168.1.113:27017";
+            // Change IP address acording to the server 
+            var connectionString = "mongodb://weasdf.ddns.net:27017";
             MongoClient dbClient = new MongoClient(connectionString);
-
-            return dbClient;
+            IMongoDatabase db = dbClient.GetDatabase("madexpences");
+            
+            return db;
         }
-
     }
 }
